@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For My Thangoo ❤️</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: white;
+  text-align: center;
+}
+
+/* Floating Hearts Background */
+.heart {
+  position: absolute;
+  color: rgba(255,255,255,0.6);
+  font-size: 20px;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+}
+
+.container {
+  z-index: 10;
+  max-width: 85%;
+}
+
+button {
+  margin: 15px;
+  padding: 10px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  background: white;
+  color: #ff4d6d;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.1);
+}
+
+.hidden {
+  display: none;
+}
+
+.quote {
+  font-size: 22px;
+  margin: 15px 0;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Final Blast Section */
+.big-love {
+  font-size: 45px;
+  font-weight: bold;
+  margin-top: 30px;
+  animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px #fff; }
+  to { text-shadow: 0 0 25px #ff004c, 0 0 40px #ff99aa; }
+}
+
+.blast-heart {
+  font-size: 100px;
+  animation: pop 1s ease forwards;
+}
+
+@keyframes pop {
+  0% { transform: scale(0); }
+  80% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+</style>
+</head>
+
+<body>
+
+<script>
+// Floating hearts background
+for(let i=0; i<25; i++){
+  let heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.animationDuration = (3 + Math.random()*5) + "s";
+  document.body.appendChild(heart);
+}
+</script>
+
+<!-- Intro -->
+<div class="container" id="mainContent">
+  <h1>Hey Thangamey 💖</h1>
+  <p>You make my life feel like a beautiful love story ✨</p>
+  <button onclick="showLove()">Tap Here 💌</button>
+</div>
+
+<!-- Apology -->
+<div class="container hidden" id="apologySection">
+  <p>
+    I’m really sorry for hurting you. <br><br>
+    I promise I will change and make things right ❤️
+  </p>
+
+  <h3>Will you forgive me? 🥺</h3>
+
+  <button onclick="goToValentine()">Yes 💖</button>
+  <button id="noBtn" onmouseover="moveButton()">No 😜</button>
+</div>
+
+<!-- Valentine -->
+<div class="container hidden" id="valentineSection">
+  <h1>Will You Be My Valentine? 💘</h1>
+  <button onclick="goToQuotes()">Yes 💍</button>
+  <button id="noBtn2" onmouseover="moveButton2()">No 😜</button>
+</div>
+
+<!-- Quotes -->
+<div class="container hidden" id="quotesSection">
+  <h1>For My Hubby ❤️</h1>
+
+  <div class="quote" style="animation-delay:1s;">💞 "In your smile, I see my whole world."</div>
+  <div class="quote" style="animation-delay:3s;">💞 "Every love story is beautiful, but ours is my favorite."</div>
+  <div class="quote" style="animation-delay:5s;">💞 "With you, forever doesn't feel long enough."</div>
+  <div class="quote" style="animation-delay:7s;">💞 "No matter what happens, I choose you. Always."</div>
+
+  <div id="finalBlast" class="hidden">
+    <div class="blast-heart">❤️</div>
+    <div class="big-love">I LOVE YOU THANGAMEYY 💖</div>
+  </div>
+</div>
+
+<script>
+function showLove() {
+  document.getElementById("mainContent").classList.add("hidden");
+  document.getElementById("apologySection").classList.remove("hidden");
+}
+
+function goToValentine() {
+  document.getElementById("apologySection").classList.add("hidden");
+  document.getElementById("valentineSection").classList.remove("hidden");
+}
+
+function goToQuotes() {
+  document.getElementById("valentineSection").classList.add("hidden");
+  document.getElementById("quotesSection").classList.remove("hidden");
+
+  // After quotes animation (9 seconds) show final blast
+  setTimeout(function(){
+    document.getElementById("finalBlast").classList.remove("hidden");
+  }, 9000);
+}
+
+function moveButton() {
+  const button = document.getElementById("noBtn");
+  const x = Math.random() * 300 - 150;
+  const y = Math.random() * 200 - 100;
+  button.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+function moveButton2() {
+  const button = document.getElementById("noBtn2");
+  const x = Math.random() * 300 - 150;
+  const y = Math.random() * 200 - 100;
+  button.style.transform = `translate(${x}px, ${y}px)`;
+}
+</script>
+
+</body>
+</html>
